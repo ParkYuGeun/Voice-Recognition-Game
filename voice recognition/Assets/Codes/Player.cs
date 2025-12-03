@@ -78,6 +78,11 @@ public class Player : MonoBehaviour
             return;
         GameManager.instance.dead();
     }
+
+    public void CorrectJump() {
+        Vector2 direction = (Vector2.up).normalized;
+        rigid.AddForce(direction * 17, ForceMode2D.Impulse);
+    }
     
 
     IEnumerator cooldown()

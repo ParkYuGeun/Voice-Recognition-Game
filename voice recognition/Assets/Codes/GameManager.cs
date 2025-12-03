@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Reflection.Emit;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Mic2 micManager;
     public useOpenAi api;
+    public WordData myData;
 
     void Awake()
     {
@@ -24,12 +27,15 @@ public class GameManager : MonoBehaviour
 
      void Start()
     {
+        LoadWord();
         Time.timeScale = 1;
         isalive = true;
     }
 
     void Update()
     {
+        if (!isalive)
+            return;
         time += Time.deltaTime;
         if (time > GameTime) {
             time = 0;
@@ -38,7 +44,7 @@ public class GameManager : MonoBehaviour
 
         if (stage > 10) {
             Time.timeScale = 0;
-            stage = 999;
+            isalive = false;
         }
     }
 
@@ -68,4 +74,26 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
 
     }
+
+    public void LoadWord() {
+        TextAsset jsonFile = Resources.Load<TextAsset>("Word");
+        if (jsonFile != null) {
+            myData = JsonUtility.FromJson<WordData>(jsonFile.text);
+
+            Debug.Log(myData.Words[0]);
+            Debug.Log(myData.Words[1]);
+            Debug.Log(myData.Words[2]);
+        }
+        else
+        {
+            Debug.LogError("단어파일을 찾을 수 없습니다");
+        }
+    }
+
+}
+
+[System.Serializable]
+public class WordData
+{
+    public List<string> Words;
 }
