@@ -23,8 +23,9 @@ public class Mic2 : MonoBehaviour
 
      void OnEnable()
     {
+        clean();
         samples = new float[sampleRate];
-        aud = Microphone.Start(Microphone.devices[0].ToString(), true, duration, sampleRate);
+        aud = Microphone.Start(Microphone.devices[0].ToString(), true, 1, sampleRate);
         //aud = GetComponent<AudioClip>();
     }
 
@@ -47,5 +48,23 @@ public class Mic2 : MonoBehaviour
             resultValue = 0;
         }
 
+    }
+
+    void clean()
+    {
+        // 1. [핵심] 혹시라도 마이크가 켜져 있다면 강제로 끕니다.
+        // (이전 스테이지에서 녹음하다가 중간에 넘어왔을 경우 방지)
+        if (Microphone.IsRecording(null))
+        {
+            Microphone.End(null);
+        }
+
+        // 2. [핵심] 이전에 쓰던 오디오 클립이 남아있다면 메모리에서 완전히 삭제합니다.
+        // Destroy를 쓰지 않으면 변수에 옛날 데이터가 남아있을 수 있습니다.
+        if (aud != null)
+        {
+            Destroy(aud); // 기존 클립 파괴
+            aud = null;   // 변수 연결 끊기
+        }
     }
 }

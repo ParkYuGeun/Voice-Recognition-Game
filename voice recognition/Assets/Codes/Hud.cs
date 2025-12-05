@@ -27,7 +27,7 @@ public class Hud : MonoBehaviour
                 break;
 
             case infotype.stage:
-                myText.text = "Stage: " + GameManager.instance.stage;
+                myText.text = "Stage: " + GameManager.instance.Stage;
                 break;
 
 

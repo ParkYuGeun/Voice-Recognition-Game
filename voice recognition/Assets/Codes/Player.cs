@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public bool islive;
     public int pp;
     public float minHeight;
+    public float maxHeight;
 
     Rigidbody2D rigid;
 
@@ -62,7 +63,6 @@ public class Player : MonoBehaviour
 
         if (transform.position.y < minHeight)
         {
-           
             transform.position = new Vector3(transform.position.x, minHeight, transform.position.z);
 
             if (rigid.linearVelocity.y < 0)
@@ -71,19 +71,37 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (transform.position.y > maxHeight)
+        {
+            // 위치를 천장 높이로 강제 고정
+            transform.position = new Vector3(transform.position.x, maxHeight, transform.position.z);
+
+            // 중요: 위로 올라가던 힘(속도)을 0으로 없앰 (안 그러면 천장에 끈적하게 붙음)
+            if (rigid.linearVelocity.y > 0)
+            {
+                rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0);
+            }
+        }
+
     }
 
-    void OnTriggerEnter2D(Collider2D coll) {
-        if (!coll.CompareTag("wall"))
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("wall"))
             return;
         GameManager.instance.dead();
     }
+
 
     public void CorrectJump() {
         Vector2 direction = (Vector2.up).normalized;
         rigid.AddForce(direction * 17, ForceMode2D.Impulse);
     }
-    
+
+    public void getDown() {
+        Vector2 direction = (Vector2.down).normalized;
+        rigid.AddForce(direction * 17, ForceMode2D.Impulse);
+    }
 
     IEnumerator cooldown()
     {
