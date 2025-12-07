@@ -33,9 +33,7 @@ public class Mic2 : MonoBehaviour
     {
         aud.GetData(samples, 0);
 
-        //평균 구하기
-        //원래대로 구하면 0에 수렴하기 때문에 
-        //배열의 값을 전부 제곱하여 더해준 후 배열의 크기만큼 나눈 뒤 제곱근을 구함
+    
         float sum = 0;
         for (int i = 0; i < samples.Length; i++) { 
         sum += Mathf.Pow(samples[i],2);

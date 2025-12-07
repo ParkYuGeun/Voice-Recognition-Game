@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         EndBanner.SetActive(true);
         Text endText = EndBanner.GetComponentsInChildren<Text>()[0];
-        endText.text = string.Format("내점수 : {0}",Stage);
+        endText.text = string.Format("내점수 : {0}",Stage-1);
     }
 
     public void LoadWord()

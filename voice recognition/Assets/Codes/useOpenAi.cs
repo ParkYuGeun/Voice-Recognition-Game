@@ -48,7 +48,7 @@ public class useOpenAi : MonoBehaviour
         if (isProcessing)
             return;
         time += Time.deltaTime;
-        if (time >= GameManager.instance.GameTime/2)
+        if (time >= GameManager.instance.GameTime/3)
         {
             isProcessing = true;
             Microphone.End(Microphone.devices[0].ToString());
