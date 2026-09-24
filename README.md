@@ -18,10 +18,10 @@
 
 ## ✨ Key Features
 
-- **다양한 적 AI & 웨이브 시스템**: 플레이어를 추적하고 공격하는 적 navMesh AI 패턴 사용
-- - **VR 멀미 경감 및 UX**: 횡이동이 아닌 teleport식 이동만을 지원 + snap turn provider을 활용해 vr특유의 멀미 및 어지러움 최소화
-- **체감형 VR UI/UX**: 가상 공간 내 3D World Space Canvas를 활용한 체력 및 스코어 표시
-- **VR 햅틱 피드백 및 타격감**: xr toolkit이 지원하는 haptic 지원을 이용한 사격, 피격, 장전 시 컨트롤러 진동을 구현하여 손맛 연출.
+- **OpenAI Whisper 기반 실시간 음성 인식 제어**: 마이크 입력 오디오 스트림을 처리하고 OpenAI Whisper API와 연동하여 플레이어의 목소리(음성 명령/음량)를 실시간으로 분석해 캐릭터 점프 및 이동을 제어하는 이색 컨트롤 메커니즘 구현
+- - **오디오 버퍼링 & API 지연 시간(Latency) 최적화**: 실시간 게임 환경에 맞춰 입력 오디오 데이터를 효율적으로 쪼개고(Chunking) 버퍼링하여, API 호출 응답 속도 및 네트워크 지연으로 인한 조작감 저하를 최소화
+- **음성 기반 물리 엔진 연동**: Whisper가 인식한 입력 신호를 Unity Rigidbody2D 물리 엔진의 AddForce/Velocity 연산과 매핑하여 자연스러운 점프 및 낙하 물리 연출 구현
+- **음성 데이터 전처리 및 노이즈 필터링**: 마이크 입력 신호의 데시벨(dB) 및 주파수 범위를 감지/전처리하여 주변 배경 소음으로 인한 오작동을 방지하고 정확한 점프 명령만 식별하도록 설계
 ---
 ## 💻 Languages and Tools
 [![Unity](https://img.shields.io/badge/Unity-000000?style=for-the-badge&logo=unity&logoColor=white)](https://unity.com)
