@@ -26,17 +26,15 @@
 ## 💻 Languages and Tools
 [![Unity](https://img.shields.io/badge/Unity-000000?style=for-the-badge&logo=unity&logoColor=white)](https://unity.com)
 [![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)](https://docs.microsoft.com/en-us/dotnet/csharp/)
-[![XR Interaction Toolkit](https://img.shields.io/badge/XR%20Interaction%20Toolkit-6F42C1?style=for-the-badge&logo=unity&logoColor=white)](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@latest)
----
+[![OpenAI Whisper](https://img.shields.io/badge/OpenAI%20Whisper-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com/research/whisper)
 
 ## 🛠 Tech Stack & Environment
 
 | 구분 | 내용 |
 | :--- | :--- |
 | **Engine** | Unity 2023.3.45f1 |
-| **Render Pipeline** | Universal Render Pipeline (URP) |
-| **Target Device** | Meta Quest 2 / Quest 3 |
-| **SDK / Framework** | Meta XR Core SDK, XR Interaction Toolkit |
+| **Render Pipeline** | URP 2D Renderer |
+| **Target Device** | PC |
 | **Language** | C# |
 | **IDE** | Visual Studio|
 
